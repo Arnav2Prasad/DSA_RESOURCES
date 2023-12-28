@@ -31,13 +31,25 @@ void enqueue(struct queue* q,char data){
 	q->arr[q->count++]=data;
 	return;
 }
+// char dequeue(struct queue* q){
+// 	if (isEmpty(*q)){
+// 		return 'x';
+// 	}
+// 	char ch=q->arr[q->start++];
+// 	q->count--;
+// 	return ch;
+// }
+
 char dequeue(struct queue* q){
-	if (isEmpty(*q)){
-		return 'x';
-	}
-	char ch=q->arr[q->start++];
-	q->count--;
-	return ch;
+  if (isEmpty(*q)){
+    return 'x';
+  }
+  char ch=q->arr[q->start];
+  for (int i=0;i<q->count-1;i++){
+    q->arr[i]=q->arr[i+1];
+  }
+  q->count--;
+  return ch;
 }
 
 void display(struct queue q){
